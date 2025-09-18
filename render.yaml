@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: chap12-1-sql-gateway
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon
+    plan: free
+    branch: main
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: JAVA_OPTS
+        value: "-Xmx512m -Xms256m"
+      - key: DATABASE_URL
+        value: jdbc:mysql://mysql-3a297a68-chap12-1.i.aivencloud.com:27412/defaultdb?ssl-mode=REQUIRED&serverTimezone=UTC
+      - key: DATABASE_USERNAME
+        value: avnadmin
+      - key: DATABASE_PASSWORD
+        sync: false # This will be set manually in Render dashboard for security
