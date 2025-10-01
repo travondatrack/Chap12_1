@@ -8,11 +8,11 @@
 
 ## Environment Variables
 
-Set these environment variables in Render:
+Set these environment variables in Render Dashboard (not in code):
 
-- `DB_URL`: jdbc:mysql://34.9.114.182:3306/murach?useSSL=true&serverTimezone=UTC
-- `DB_USERNAME`: murach_user
-- `DB_PASSWORD`: Spk61392005@
+- `DB_URL`: Your database connection URL
+- `DB_USERNAME`: Your database username
+- `DB_PASSWORD`: Your database password
 
 ## Local Development
 
@@ -28,11 +28,11 @@ docker-compose up --build
 # Build the image
 docker build -t sqlgateway .
 
-# Run with environment variables
+# Run with environment variables (set your own values)
 docker run -p 8080:8080 \
-  -e DB_URL="jdbc:mysql://34.9.114.182:3306/murach?useSSL=true&serverTimezone=UTC" \
-  -e DB_USERNAME="murach_user" \
-  -e DB_PASSWORD="Spk61392005@" \
+  -e DB_URL="your_database_url" \
+  -e DB_USERNAME="your_username" \
+  -e DB_PASSWORD="your_password" \
   sqlgateway
 ```
 
@@ -54,10 +54,10 @@ docker run -p 8080:8080 \
 
 ## Database Setup
 
-Make sure your Google Cloud SQL database has:
+Make sure your database has:
 
-- Database named `murach`
-- User `murach_user` with password `Spk61392005@`
+- Database named `murach` (or your preferred name)
+- A user with appropriate permissions
 - Tables created (users, etc.)
 
 ## Testing
