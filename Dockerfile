@@ -29,8 +29,11 @@ RUN javac -cp "/usr/local/tomcat/lib/*:WEB-INF/lib/*" \
     -d WEB-INF/classes \
     src/java/murach/sql/*.java
 
-# Create WAR file
-RUN jar cf /usr/local/tomcat/webapps/ROOT.war *
+# Deploy directly to ROOT directory instead of WAR
+RUN rm -f /usr/local/tomcat/webapps/ROOT.war && \
+    mkdir -p /usr/local/tomcat/webapps/ROOT && \
+    cp -r * /usr/local/tomcat/webapps/ROOT/ && \
+    ls -la /usr/local/tomcat/webapps/ROOT/
 
 # Copy MySQL connector to Tomcat lib
 COPY lib/mysql-connector-j-9.4.0.jar /usr/local/tomcat/lib/

@@ -6,9 +6,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - DB_URL=jdbc:mysql://34.9.114.182:3306/murach?useSSL=true&serverTimezone=UTC
-      - DB_USERNAME=murach_user
-      - DB_PASSWORD=Spk61392005@
+      # Set these in .env file (not committed to git)
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
     depends_on:
       - db
 
@@ -16,10 +17,10 @@ services:
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: murach
-      MYSQL_USER: murach_user
-      MYSQL_PASSWORD: sesame
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-murach}
+      MYSQL_USER: ${MYSQL_USER:-murach_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-sesame}
     ports:
       - "3306:3306"
     volumes:
