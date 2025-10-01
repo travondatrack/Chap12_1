@@ -1,9 +1,9 @@
 # Multi-stage build
 FROM openjdk:11-jdk-slim as builder
 
-# Install Ant and wget
+# Install Ant
 RUN apt-get update && \
-    apt-get install -y ant wget && \
+    apt-get install -y ant && \
     rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -11,13 +11,6 @@ WORKDIR /app
 
 # Copy source code
 COPY . .
-
-# Download MySQL Connector/J if not present
-RUN if [ ! -f "lib/mysql-connector-j-9.4.0.jar" ]; then \
-        mkdir -p lib && \
-        wget -O lib/mysql-connector-j-9.4.0.jar \
-        https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/9.4.0/mysql-connector-j-9.4.0.jar; \
-    fi
 
 # Build the application
 RUN ant clean && ant
