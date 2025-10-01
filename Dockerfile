@@ -1,9 +1,9 @@
 # Multi-stage build
 FROM openjdk:11-jdk-slim as builder
 
-# Install Ant
+# Install Ant and wget
 RUN apt-get update && \
-    apt-get install -y ant && \
+    apt-get install -y ant wget && \
     rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -11,6 +11,13 @@ WORKDIR /app
 
 # Copy source code
 COPY . .
+
+# Download MySQL Connector/J if not present
+RUN if [ ! -f "lib/mysql-connector-j-9.4.0.jar" ]; then \
+        mkdir -p lib && \
+        wget -O lib/mysql-connector-j-9.4.0.jar \
+        https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/9.4.0/mysql-connector-j-9.4.0.jar; \
+    fi
 
 # Build the application
 RUN ant clean && ant
@@ -30,7 +37,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=builder /app/dist/ch12_ex1_sqlGateway.war /usr/local/tomcat/webapps/ROOT.war
 
 # Copy MySQL connector to Tomcat lib
-COPY lib/mysql-connector-j-9.4.0.jar /usr/local/tomcat/lib/
+COPY --from=builder /app/lib/mysql-connector-j-9.4.0.jar /usr/local/tomcat/lib/
 
 # Create context.xml with environment variables
 RUN mkdir -p /usr/local/tomcat/conf/Catalina/localhost
