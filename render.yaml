@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: sqlgateway-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_URL
+        value: jdbc:mysql://34.9.114.182:3306/murach?useSSL=true&serverTimezone=UTC
+      - key: DB_USERNAME
+        value: murach_user
+      - key: DB_PASSWORD
+        value: Spk61392005@
+      - key: JAVA_OPTS
+        value: "-Xmx512m -Xms256m"
+    healthCheckPath: /
+    disk:
+      name: sqlgateway-disk
+      mountPath: /data
+      sizeGB: 1
+    plan: free

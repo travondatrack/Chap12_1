@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/ch12_ex1_sqlGateway_sol">
+    <Resource name="jdbc/murach" auth="Container" 
+        driverClassName="com.mysql.cj.jdbc.Driver" 
+        url="jdbc:mysql://34.9.114.182:3306/murach?useSSL=true&amp;serverTimezone=UTC" 
+        username="murach_user" password="Spk61392005@" 
+        maxActive="100" maxIdle="30" maxWait="10000" 
+        logAbandoned="true" removeAbandoned="true" 
+        removeAbandonedTimeout="60" type="javax.sql.DataSource" />  
+</Context>

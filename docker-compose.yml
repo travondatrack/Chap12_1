@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_URL=jdbc:mysql://34.9.114.182:3306/murach?useSSL=true&serverTimezone=UTC
+      - DB_USERNAME=murach_user
+      - DB_PASSWORD=Spk61392005@
+    depends_on:
+      - db
+
+  # Optional: Local MySQL for development
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: murach
+      MYSQL_USER: murach_user
+      MYSQL_PASSWORD: sesame
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql_scripts:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql_data:

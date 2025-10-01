@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/murach" auth="Container" 
+        driverClassName="com.mysql.cj.jdbc.Driver" 
+        url="${DB_URL}" 
+        username="${DB_USERNAME}" 
+        password="${DB_PASSWORD}" 
+        maxActive="100" maxIdle="30" maxWait="10000" 
+        logAbandoned="true" removeAbandoned="true" 
+        removeAbandonedTimeout="60" type="javax.sql.DataSource" />  
+</Context>
