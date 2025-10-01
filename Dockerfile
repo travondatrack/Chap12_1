@@ -48,17 +48,3 @@ EXPOSE 8080
 
 # Start with custom script
 CMD ["/usr/local/bin/startup.sh"]
-
-# Create context.xml with environment variables
-RUN mkdir -p /usr/local/tomcat/conf/Catalina/localhost
-COPY docker/context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
-
-# Copy startup script
-COPY docker/startup.sh /usr/local/bin/startup.sh
-RUN chmod +x /usr/local/bin/startup.sh
-
-# Expose port
-EXPOSE 8080
-
-# Start with custom script
-CMD ["/usr/local/bin/startup.sh"]

@@ -56,35 +56,36 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
-      out.write("<head>\n");
-      out.write("    <meta charset=\"utf-8\">\n");
+      out.write("  <head>\n");
+      out.write("    <meta charset=\"utf-8\" />\n");
       out.write("    <title>Murach's Java Servlets and JSP</title>\n");
-      out.write("    <link rel=\"stylesheet\" href=\"styles/main.css\" type=\"text/css\"/>\n");
-      out.write("</head>\n");
-      out.write("<body>\n");
+      out.write("    <link rel=\"stylesheet\" href=\"styles/main.css\" type=\"text/css\" />\n");
+      out.write("  </head>\n");
+      out.write("  <body>\n");
       out.write("    \n");
-      out.write("\n");
+      out.write("    ");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
       out.write("\n");
-      out.write("    \n");
-      out.write("<h1>The SQL Gateway</h1>\n");
-      out.write("<p>Enter an SQL statement and click the Execute button.</p>\n");
       out.write("\n");
-      out.write("<p><b>SQL statement:</b></p>\n");
-      out.write("<form action=\"sqlGateway\" method=\"post\">\n");
-      out.write("    <textarea name=\"sqlStatement\" cols=\"60\" rows=\"8\">");
+      out.write("    <h1>The SQL Gateway</h1>\n");
+      out.write("    <p>Enter an SQL statement and click the Execute button.</p>\n");
+      out.write("\n");
+      out.write("    <p><b>SQL statement:</b></p>\n");
+      out.write("    <form action=\"sqlGateway\" method=\"post\">\n");
+      out.write("      <textarea name=\"sqlStatement\" cols=\"60\" rows=\"8\">\n");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sqlStatement}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</textarea>\n");
-      out.write("    <input type=\"submit\" value=\"Execute\">\n");
-      out.write("</form>\n");
+      out.write("</textarea\n");
+      out.write("      >\n");
+      out.write("      <input type=\"submit\" value=\"Execute\" />\n");
+      out.write("    </form>\n");
       out.write("\n");
-      out.write("<p><b>SQL result:</b></p>\n");
+      out.write("    <p><b>SQL result:</b></p>\n");
+      out.write("    ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sqlResult}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\n");
-      out.write("\n");
-      out.write("</body>\n");
-      out.write("</html>");
+      out.write("  </body>\n");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -111,10 +112,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\n");
-        out.write("    ");
+        out.write("      ");
         if (_jspx_meth_c_set_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_0, _jspx_page_context))
           return true;
-        out.write('\n');
+        out.write("\n");
+        out.write("    ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -137,7 +139,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_set_0.setPageContext(_jspx_page_context);
     _jspx_th_c_set_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_0);
     _jspx_th_c_set_0.setVar("sqlStatement");
-    _jspx_th_c_set_0.setValue(new String("select * from User"));
+    _jspx_th_c_set_0.setValue(new String("SELECT * FROM users;"));
     int _jspx_eval_c_set_0 = _jspx_th_c_set_0.doStartTag();
     if (_jspx_th_c_set_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_0);
