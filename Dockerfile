@@ -40,7 +40,7 @@ COPY lib/mysql-connector-j-9.4.0.jar /usr/local/tomcat/lib/
 
 # Create context.xml with environment variables
 RUN mkdir -p /usr/local/tomcat/conf/Catalina/localhost
-COPY docker/context.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
+COPY docker/context-hardcoded.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
 
 # Copy startup script
 COPY docker/startup.sh /usr/local/bin/startup.sh

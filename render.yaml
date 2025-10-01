@@ -5,11 +5,11 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_URL
-        # Set this in Render dashboard: jdbc:mysql://YOUR_DB_HOST:3306/murach?useSSL=true&serverTimezone=UTC
+        value: jdbc:mysql://34.9.114.182:3306/murach?useSSL=true&serverTimezone=UTC
       - key: DB_USERNAME
-        # Set this in Render dashboard: your_username
+        value: murach_user
       - key: DB_PASSWORD
-        # Set this in Render dashboard: your_password
+        value: Spk61392005@
       - key: JAVA_OPTS
         value: "-Xmx512m -Xms256m"
     healthCheckPath: /
