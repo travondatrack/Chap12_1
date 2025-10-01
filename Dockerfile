@@ -20,9 +20,9 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 # Create directories for compilation
 RUN mkdir -p WEB-INF/classes WEB-INF/lib
 
-# Copy web content
+# Copy web content and all libraries
 RUN cp -r web/* ./ && \
-    cp lib/mysql-connector-j-9.4.0.jar WEB-INF/lib/
+    cp lib/*.jar WEB-INF/lib/
 
 # Compile Java sources using Tomcat's servlet API
 RUN javac -cp "/usr/local/tomcat/lib/*:WEB-INF/lib/*" \
